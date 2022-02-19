@@ -2,14 +2,30 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import { User } from "@/types/user"
 import { Tool } from "@/types/tool"
+import { ReserveState } from '@/types/reserveState'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   strict: true,
   state: {
-    userList: new Array<User>(),
-    toolList: new Array<Tool>(),
+    userList: [
+      new User(1, "田中", "ex01@example.com", "12345678", 0, []),
+      new User(2, "鈴木", "ex02@example.com", "12345678", 0, []),
+      new User(3, "佐藤", "ex03@example.com", "12345678", 0, []),
+      new User(4, "長崎", "ex04@example.com", "12345678", 0, []),
+      new User(5, "富山", "ex05@example.com", "12345678", 0, []),
+    ],
+    toolList: [
+      new Tool(1, "iPad", "", new ReserveState(false, 0, 0)),
+      new Tool(1, "iPhone", "", new ReserveState(false, 0, 0)),
+      new Tool(1, "プロジェクター", "", new ReserveState(false, 0, 0)),
+      new Tool(1, "スクリーン", "", new ReserveState(false, 0, 0)),
+      new Tool(1, "軽トラック", "", new ReserveState(false, 0, 0)),
+      new Tool(1, "大型車", "", new ReserveState(false, 0, 0)),
+      new Tool(1, "Webカメラ", "", new ReserveState(false, 0, 0)),
+      new Tool(1, "横断幕", "", new ReserveState(false, 0, 0)),
+    ],
     isLogedIn: false 
   },
   actions: {

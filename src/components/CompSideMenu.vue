@@ -1,13 +1,12 @@
 <template>
   <div>
     <aside class="menu">
-      
+      <ul class="menu-list">
+        <li class="menu-list-title"><div><input type="text" v-model="serchText"></div>
+        <div class="serch-button">検索</div></li>
+      </ul>
     <ul class="menu-list">
-      <li class="menu-list-title"><div><input type="text" v-model="serchText"></div>
-    <div class="serch-button">検索</div></li>
-      <li class="menu-list-title active">タイムライン</li>
-      <li class="menu-list-title">ホーム</li>
-      <li class="menu-list-title">設定</li>
+      <li class="menu-list-title" v-for="tool of getToolList" v-bind:key="tool.id">{{ tool.name }}</li>
     </ul>
   </aside>
   </div>
@@ -16,13 +15,17 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import CompSerchField from "@/components/CompSerchField.vue"
+import { Tool } from "@/types/tool";
 @Component({
   components:{
     CompSerchField,
   }
 })
 export default class CompSideMenu extends Vue {
-
+  private serchText = "";
+  get getToolList(): Array<Tool>{
+    return this.$store.getters.getToolList;
+  }
 }
 </script>
 

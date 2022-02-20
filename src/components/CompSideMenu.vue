@@ -6,7 +6,9 @@
         <div class="serch-button">検索</div></li>
       </ul>
     <ul class="menu-list">
-      <li class="menu-list-title" v-for="tool of getToolList" v-bind:key="tool.id">{{ tool.name }}</li>
+      <li class="menu-list-title" v-for="tool of getToolList" v-bind:key="tool.id">
+        <router-link class="menu-link" v-bind:to="'/toolDetail/' + tool.id">{{ tool.name }}</router-link>
+      </li>
     </ul>
   </aside>
   </div>
@@ -47,6 +49,10 @@ export default class CompSideMenu extends Vue {
   border-bottom: 1px solid gray;
   line-height: 40px;
   font-size: 0.8em;
+}
+.menu-link{
+  text-decoration: none;
+  color: black;
 }
 .menu-list-title:hover, .active {
   font-size: 1em;

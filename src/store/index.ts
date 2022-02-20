@@ -10,11 +10,11 @@ export default new Vuex.Store({
   strict: true,
   state: {
     userList: [
-      new User(1, "田中", "ex01@example.com", "12345678", 0, []),
+      new User(1, "田中", "ex01@example.com", "12345678", 1, []),
       new User(2, "鈴木", "ex02@example.com", "12345678", 0, [new Tool(3, "プロジェクター", "", new ReserveState(true, 2, 9, 10)),new Tool(7, "Webカメラ", "", new ReserveState(true, 2, 12, 14))]),
-      new User(3, "佐藤", "ex03@example.com", "12345678", 0, []),
-      new User(4, "長崎", "ex04@example.com", "12345678", 0, [new Tool(5, "軽トラック", "", new ReserveState(true, 4, 15, 17))]),
-      new User(5, "富山", "ex05@example.com", "12345678", 0, []),
+      new User(3, "佐藤", "ex03@example.com", "12345678", 2, []),
+      new User(4, "長崎", "ex04@example.com", "12345678", 1, [new Tool(5, "軽トラック", "", new ReserveState(true, 4, 15, 17))]),
+      new User(5, "富山", "ex05@example.com", "12345678", 3, []),
     ],
     toolList: [
       new Tool(1, "iPad", "", new ReserveState(false, 0, 0, 0)),

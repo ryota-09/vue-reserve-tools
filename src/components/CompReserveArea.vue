@@ -10,7 +10,7 @@ import { Tool } from "@/types/tool";
 import { Component, Vue } from "vue-property-decorator";
 @Component
 export default class CompReserveArea extends Vue {
-  private currentTool = new Tool(0, "", "", new ReserveState(false, 0, 0, 0))
+  private currentTool = new Tool(0, "", "", new ReserveState(false, 0, 0, 0, 0, 0))
   private startUsehour = 0;
   private endUsehour = 0;
 

@@ -32,6 +32,13 @@ export default class CompSideMenu extends Vue {
 </script>
 
 <style scoped>
+.menu-link{
+  text-decoration: none;
+  color: black;
+}
+.menu-link:hover{
+  text-decoration: none;
+}
 .menu {
   width: 149px;
   background: #eee;
@@ -50,14 +57,9 @@ export default class CompSideMenu extends Vue {
   line-height: 40px;
   font-size: 0.8em;
 }
-.menu-link{
-  text-decoration: none;
-  color: black;
-}
 .menu-list-title:hover, .active {
   font-size: 1em;
   background-color: pink;
-  color: white;
   font-weight: bold;
 }
 </style>

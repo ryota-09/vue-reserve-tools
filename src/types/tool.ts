@@ -5,7 +5,7 @@ export class Tool {
     private _id: number,
     private _name: string,
     private _image: string,
-    private _currentReserveState: ReserveState
+    private _reserveArray: Array<ReserveState>
   ) {}
 
   public get id(): number {
@@ -32,11 +32,11 @@ export class Tool {
     this._image = image;
   }
 
-  public get currentReserveState(): ReserveState {
-    return this._currentReserveState;
+  public get reserveArray(): Array<ReserveState> {
+    return this._reserveArray;
   }
 
-  public set currentReserveState(currentReserveState: ReserveState) {
-    this._currentReserveState = currentReserveState;
+  public set reserveArray(reserveArray: Array<ReserveState>) {
+    this._reserveArray = reserveArray;
   }
 }

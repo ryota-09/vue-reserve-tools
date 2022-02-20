@@ -6,7 +6,7 @@
         <div>予約日時の入力</div>
           <div class="start-day"><input type="text" size="5" v-model.number="startUseDay"> 日</div>
           <div class="reserve-hour"><input type="text" size="5" v-model.number="startUsehour"> 時 ~ <input type="text" size="5" v-model.number="endUsehour"> 時</div>
-          <div class="reserve-button"> 予約 </div>
+          <div class="reserve-button" v-on:click="onClick"> 予約 </div>
       </div>
     </form>
     <span class="image-area"><img v-bind:src="currentTool.image" alt=""></span>
@@ -14,12 +14,11 @@
 </template>
 
 <script lang="ts">
-import { ReserveState } from "@/types/reserveState";
 import { Tool } from "@/types/tool";
 import { Component, Vue } from "vue-property-decorator";
 @Component
 export default class CompReserveArea extends Vue {
-  private currentTool = new Tool(0, "", "", new ReserveState(false, 0, 0, 0, 0, 0))
+  private currentTool = new Tool(0, "", "", [])
   private startUsehour = "";
   private endUsehour = "";
   private startUseDay = "";
@@ -28,6 +27,17 @@ export default class CompReserveArea extends Vue {
   created(): void{
     const toolId = Number(this.$route.params.id);
     this.currentTool = this.$store.getters.getToolByID(toolId);
+  }
+
+  onClick(): void{
+    this.$store.commit("setReserveDate", {
+      toolId: this.currentTool.id,
+      isReserved: true,
+      userId: this.$store.getters.getCurrentUser.id,
+      startUseDay: this.startUseDay,
+      startUsehour: this.startUsehour,
+      endUsehour: this.endUsehour
+    })
   }
 }
 </script>

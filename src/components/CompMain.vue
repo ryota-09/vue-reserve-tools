@@ -2,7 +2,7 @@
   <div>
     <main class="main-container">
       <h2>予約者タイムライン</h2>
-      <div v-for="tool of getLentToolList" v-bind:key="tool.id">
+      <div v-for="tool of getReserveToolList" v-bind:key="tool.id">
         <div>{{ tool.name }}</div>
         <div>{{ getLentalUserById(tool.currentReserveState.userId).name }}  ( {{ getDepName(getLentalUserById(tool.currentReserveState.userId).depId) }} )</div>
         <div>{{ tool.currentReserveState.startUsehour }}時 ~ {{ tool.currentReserveState.endUsehour }}時</div>
@@ -38,8 +38,8 @@ export default class CompMain extends Vue {
     return this.$store.getters.getUserByID(userId)
   }
   
-  get getLentToolList(): Array<Tool>{
-    return this.$store.getters.getLentToolList;
+  get getReserveToolList(): Array<Tool>{
+    return this.$store.getters.getReserveToolList;
   }
 
 }

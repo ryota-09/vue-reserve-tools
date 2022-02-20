@@ -2,16 +2,19 @@
   <div class="main2">
     <CompReserveArea></CompReserveArea>
     <div class="devider"></div>
+    <CompReserveList></CompReserveList>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import CompReserveArea from "@/components/CompReserveArea.vue";
+import CompReserveList from "@/components/CompReserveList.vue";
 
 @Component({
   components: {
     CompReserveArea,
+    CompReserveList
   }
 })
 export default class CompMain2 extends Vue {

@@ -54,7 +54,7 @@ export default new Vuex.Store({
         payload.startUsehour,
         payload.endUsehour,
         payload.startUseDay,
-        0
+        payload.endUseDay
       )
       newArray[0].reserveArray.push(newReserveState);
     }

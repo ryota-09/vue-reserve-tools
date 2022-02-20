@@ -3,10 +3,9 @@
     <main class="main-container">
       <h2>予約者タイムライン</h2>
       <div v-for="tool of getReserveToolList" v-bind:key="tool.id">
-        <div>{{ tool.name }}</div>
+        <div class="tool-title">{{ tool.name }}</div>
         <div v-for="(reserve,index) of tool.reserveArray" v-bind:key="index">
-        <div>{{ getLentalUserById(reserve.userId).name }}  ( {{ getDepName(getLentalUserById(reserve.userId).depId) }} )</div>
-        <div>{{ reserve.startUsehour }}時 ~ {{ reserve.endUsehour }}時</div>
+        <div>{{ getLentalUserById(reserve.userId).name }}  ( {{ getDepName(getLentalUserById(reserve.userId).depId) }} )<span>  {{ reserve.startUsehour }}時 ~ {{ reserve.endUsehour }}時</span></div>
         </div>
         <hr>
       </div>
@@ -52,5 +51,10 @@ export default class CompMain extends Vue {
   width: calc(100% - 150px);
   margin: 0;
   padding: 0 30px 0 160px;
+}
+.tool-title {
+  padding: 5px;
+  border: 2px solid pink;
+  display: inline-block;
 }
 </style>

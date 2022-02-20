@@ -34,9 +34,10 @@ export default class CompReserveArea extends Vue {
       toolId: this.currentTool.id,
       isReserved: true,
       userId: this.$store.getters.getCurrentUser.id,
-      startUseDay: this.startUseDay,
       startUsehour: this.startUsehour,
-      endUsehour: this.endUsehour
+      endUsehour: this.endUsehour,
+      startUseDay: this.startUseDay,
+      endUseDay: this.startUseDay
     })
   }
 }

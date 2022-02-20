@@ -2,7 +2,7 @@
   <div class="reserve-list">
     <h2>利用者スケジュール</h2>
     <hr>
-    <div class="sameday-reserve-list" v-for="day of getStartDayArray()" v-bind:key="day">
+    <div class="sameday-reserve-list" v-for="day of getStartDayArray" v-bind:key="day">
       <div>2月{{ day }}日</div>
       <div v-for="(reserve,index) of sameDayReserveList(day)" v-bind:key="index">
         {{ getLentalUserById(reserve.userId).name }} (  {{ getDepName(getLentalUserById(reserve.userId).depId) }} )
@@ -22,6 +22,8 @@ import { User } from "@/types/user";
 export default class CompReserveList extends Vue {
   private currentTool = new Tool(0, "", "", []);
   private depName = "";
+  private initReserveState = new ReserveState(false, 0, 0, 0, 0, 0);
+  private initArray = new Array<ReserveState>();
 
   created(): void{
     const toolId = Number(this.$route.params.id);
@@ -41,25 +43,30 @@ export default class CompReserveList extends Vue {
     return this.depName
   }
 
-  getStartDayArray(): Array<number>{
+  get getStartDayArray(): Array<number>{
     let newArray = new Array<number>();
-    for(let reserve of this.currentTool.reserveArray){
-      if(reserve && !newArray.find(value => value === reserve.startUseDay)){
-        newArray.push(reserve.startUseDay);
+    if(this.currentTool.reserveArray){
+      for(let reserve of this.currentTool.reserveArray){
+        if(reserve && !newArray.find(value => value === reserve.startUseDay)){
+          newArray.push(reserve.startUseDay);
+        }
       }
     }
+    console.log(newArray)
     return newArray;
   }
 
   sameDayReserveList(startUseDay: number): Array<ReserveState>{
-    let newArray = new Array<ReserveState>();
-    for(let reserve of this.currentTool.reserveArray){
-      if( reserve.startUseDay === startUseDay ){
-        newArray.push(reserve);
+    console.log("@@@@@@  1  @@@@@@@")
+    if(this.currentTool.reserveArray){
+      for(let reserve of this.currentTool.reserveArray){
+        if(reserve.startUseDay === startUseDay){
+          this.initReserveState = reserve
+          this.initArray.push(this.initReserveState)
+        }
       }
     }
-    console.log(newArray);
-    return newArray
+    return this.initArray;
   }
 
    getLentalUserById(userId: number): User{

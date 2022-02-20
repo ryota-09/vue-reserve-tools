@@ -4,8 +4,10 @@
       <h2>予約者タイムライン</h2>
       <div v-for="tool of getReserveToolList" v-bind:key="tool.id">
         <div>{{ tool.name }}</div>
-        <div>{{ getLentalUserById(tool.currentReserveState.userId).name }}  ( {{ getDepName(getLentalUserById(tool.currentReserveState.userId).depId) }} )</div>
-        <div>{{ tool.currentReserveState.startUsehour }}時 ~ {{ tool.currentReserveState.endUsehour }}時</div>
+        <div v-for="(reserve,index) of tool.reserveArray" v-bind:key="index">
+        <div>{{ getLentalUserById(reserve.userId).name }}  ( {{ getDepName(getLentalUserById(reserve.userId).depId) }} )</div>
+        <div>{{ reserve.startUsehour }}時 ~ {{ reserve.endUsehour }}時</div>
+        </div>
         <hr>
       </div>
     </main>

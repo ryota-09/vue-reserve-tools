@@ -77,8 +77,10 @@ export default new Vuex.Store({
     getReserveToolList(state){
         const newArray = new Array<Tool>();
         for(const tool of state.toolList){
+          let count = 0;
           for(const reserveState of tool.reserveArray){
-            if(reserveState){
+            count = count + 1;
+            if(reserveState && count === 1){
               newArray.push(tool)
             }
           }

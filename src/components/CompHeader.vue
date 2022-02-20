@@ -31,7 +31,6 @@ export default class CompHeader extends Vue {
   font-family:initial;
   line-height: 60px;
   padding-left: 10px;
-  color: white;
 }
 .sub {
   display: flex;

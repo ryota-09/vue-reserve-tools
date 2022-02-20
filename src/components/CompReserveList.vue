@@ -69,5 +69,7 @@ export default class CompReserveList extends Vue {
 </script>
 
 <style scoped>
-
+.reserve-list {
+  margin: 10px;
+}
 </style>

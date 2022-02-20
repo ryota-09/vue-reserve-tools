@@ -1,6 +1,6 @@
 <template>
   <div class="reserve-container">
-    <h2 class="reserve-area-title">{{ currentTool.name }}の使用予約</h2>
+    <h2 class="reserve-area-title">{{ currentTool.name }}の利用予約</h2>
     <form action="post">
       <div class="reserve-term">
         <div>予約日時の入力</div>

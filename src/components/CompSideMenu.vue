@@ -2,7 +2,7 @@
   <div>
     <aside class="menu">
       <ul class="menu-list">
-        <li class="menu-list-title"><div><input type="text" v-model="serchText"></div>
+        <li class="menu-list-title"><div><input type="text" size="15" v-model="serchText"></div>
         <div class="serch-button">検索</div></li>
       </ul>
     <ul class="menu-list">

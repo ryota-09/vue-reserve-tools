@@ -17,7 +17,7 @@ export default new Vuex.Store({
       new User(5, "富山", "ex05@example.com", "12345678", 3, []),
     ],
     toolList: [
-      new Tool(1, "iPad", "", new ReserveState(false, 0, 0, 0, 0, 0)),
+      new Tool(1, "iPad", "/img/ipad.jpg", new ReserveState(false, 0, 0, 0, 0, 0)),
       new Tool(2, "iPhone", "", new ReserveState(false, 0, 0, 0, 0, 0)),
       new Tool(3, "プロジェクター", "", new ReserveState(true, 2, 9, 10, 10, 10)),
       new Tool(4, "スクリーン", "", new ReserveState(false,0,  0, 0, 0, 0)),

@@ -19,7 +19,7 @@ export default class CompFooter extends Vue {}
 <style scoped>
 footer {
   height: 65px;
-  color: white;
+  color: black;
   background-color: pink;
 }
 

@@ -53,7 +53,9 @@ export default class CompMain extends Vue {
   padding: 0 30px 0 160px;
 }
 .tool-title {
-  padding: 5px;
+  padding: 5px 0;
+  width: 150px;
+  text-align: center;
   border: 2px solid pink;
   display: inline-block;
 }

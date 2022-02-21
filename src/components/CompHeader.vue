@@ -1,7 +1,7 @@
 <template>
   <div>
     <header class="header">
-      <h1 class="logo">Reserve Tools</h1>
+      <h1 class="logo" v-on:click="onClick">Reserve Tools</h1>
       <div class="sub">備品予約管理システム</div>
     </header>
   </div>
@@ -11,7 +11,9 @@
 import { Component, Vue } from "vue-property-decorator";
 @Component
 export default class CompHeader extends Vue {
-
+  onClick(): void{
+    this.$router.push("/top");
+  }
 }
 </script>
 
@@ -31,6 +33,7 @@ export default class CompHeader extends Vue {
   font-family:initial;
   line-height: 60px;
   padding-left: 10px;
+  cursor: pointer;
 }
 .sub {
   display: flex;

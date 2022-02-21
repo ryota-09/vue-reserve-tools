@@ -1,15 +1,12 @@
 <template>
   <div class="reserve-list">
     <h2>利用者スケジュール</h2>
-    <hr>
-    <div class="sameday-reserve-list" v-for="day of getStartDayArray" v-bind:key="day">
-      <div>2月{{ day }}日</div>
-      <div v-for="(reserve,index) of sameDayReserveList(day)" v-bind:key="index">
+      <div v-for="(reserve,index) of sameDayReserveList" v-bind:key="index">
+        {{ reserve.startUseDay }}日
         {{ getLentalUserById(reserve.userId).name }} (  {{ getDepName(getLentalUserById(reserve.userId).depId) }} )
         {{ reserve.startUsehour }}時 ~ {{ reserve.endUsehour }}時
       </div>
       <hr>
-    </div>
   </div>
 </template>
 
@@ -22,7 +19,6 @@ import { User } from "@/types/user";
 export default class CompReserveList extends Vue {
   private currentTool = new Tool(0, "", "", []);
   private depName = "";
-  private initReserveState = new ReserveState(false, 0, 0, 0, 0, 0);
   private initArray = new Array<ReserveState>();
 
   created(): void{
@@ -43,28 +39,29 @@ export default class CompReserveList extends Vue {
     return this.depName
   }
 
-  get getStartDayArray(): Array<number>{
-    let newArray = new Array<number>();
-    if(this.currentTool.reserveArray){
-      for(let reserve of this.currentTool.reserveArray){
-        if(reserve && !newArray.find(value => value === reserve.startUseDay)){
-          newArray.push(reserve.startUseDay);
-        }
-      }
-    }
-    console.log(newArray)
-    return newArray;
-  }
+  // get getStartDayArray(): Array<number>{
+  //   let newArray = new Array<number>();
+  //   if(this.currentTool.reserveArray){
+  //     for(let reserve of this.currentTool.reserveArray){
+  //       if(reserve && !newArray.find(value => value === reserve.startUseDay)){
+  //         newArray.push(reserve.startUseDay);
+  //       }
+  //     }
+  //   }
+  //   console.log(newArray)
+  //   return newArray;
+  // }
 
-  sameDayReserveList(startUseDay: number): Array<ReserveState>{
+  get sameDayReserveList(): Array<ReserveState>{
     console.log("@@@@@@  1  @@@@@@@")
     if(this.currentTool.reserveArray){
-      for(let reserve of this.currentTool.reserveArray){
-        if(reserve.startUseDay === startUseDay){
-          this.initReserveState = reserve
-          this.initArray.push(this.initReserveState)
+      this.initArray = this.currentTool.reserveArray.sort(function( a:ReserveState, b:ReserveState ){
+        if( a.startUseDay < b.startUseDay){
+          return -1;
+        } else {
+          return 1;
         }
-      }
+      });
     }
     return this.initArray;
   }

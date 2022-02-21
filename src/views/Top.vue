@@ -5,6 +5,7 @@
         <CompSideMenu></CompSideMenu>
         <CompMain></CompMain>
       </div>
+    <CompFooter></CompFooter>
   </div>
 </template>
 
